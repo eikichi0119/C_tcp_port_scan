@@ -17,6 +17,7 @@ int main(int argc, char **argv){
     int err, i, sock, start, end;
     char hostname[100];
     struct sockaddr_in sa;
+    FILE *pFile;
 
     printf("Enter hostname or IP:");
     fgets(hostname, sizeof hostname, stdin);
@@ -46,9 +47,9 @@ int main(int argc, char **argv){
     }
 
     for(i = start;  i <= end; i++){
-        printf("Scanning port %i\n",i);
-
-        sa.sin_port = htons(i);
+	pFile = freopen("out.txt","a", stdout);
+	printf("Scanning port %i\n", i);        
+	sa.sin_port = htons(i);
         sock = socket(AF_INET, SOCK_STREAM, 0);
 
         if(socket < 0){
@@ -65,6 +66,7 @@ int main(int argc, char **argv){
         }
         close(sock);
     }
+    fclose(pFile);
     fflush(stdout);
     return 0;
 }
