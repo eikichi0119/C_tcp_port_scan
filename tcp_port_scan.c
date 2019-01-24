@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 int main(int argc, char **argv){
 
