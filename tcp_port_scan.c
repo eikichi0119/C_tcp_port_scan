@@ -16,7 +16,7 @@ int main(int argc, char **argv){
     struct sockaddr_in sa;
 
     printf("Enter hostname or IP:");
-    gets(hostname);
+    fgets(hostname, sizeof hostname, stdin);
 
     printf("\n");
 
